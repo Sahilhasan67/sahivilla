@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahi Villa - World's Smartest Real Estate</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <span>SAHI VILLA</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+   
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Find Your Dream Property in Seconds</h1>
+            <p>Discover 1000+ verified properties across 50+ cities</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Enter location...">
+                <select>
+                    <option>Apartment</option>
+                    <option>Villa</option>
+                    <option>Plot</option>
+                    <option>Commercial</option>
+                </select>
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="properties" class="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Properties</h2>
+                <p>Handpicked premium listings just for you</p>
+            </div>
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Properties will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Detail Modal -->
+    <div id="propertyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="property-detail" id="propertyDetail">
+             
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+      <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-hero">
+                <h1>About SAHI VILLA</h1>
+                <p>Your trusted partner for premium real estate across India</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Why Choose SAHI VILLA?</h2>
+                    <p>With 15+ years of experience in Indian real estate, we've helped 50,000+ families find their dream homes across 50+ cities. Our expert team ensures transparent deals and verified properties.</p>
+                    
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>50K+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Cities Covered</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Verified Properties</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=500&fit=crop" alt="About IndiaHomes">
+                </div>
+            </div>
+
+            <div class="offices-preview">
+                <h3>Our Offices Across India</h3>
+                <div class="offices-grid">
+                    <div class="office-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Uttrakhand</h4>
+                        <p>Haridwar</p>
+                    </div>
+                    <div class="office-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Bangalore</h4>
+                        <p>Indiranagar</p>
+                    </div>
+                    <div class="office-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Delhi</h4>
+                        <p>Connaught Place</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Detail Modal -->
+    <div class="property-modal" id="propertyModal">
+        <div class="modal-content">
+            <span class="close" onclick="closePropertyModal()">&times;</span>
+            
+            <div class="property-header">
+                <div class="property-gallery">
+                    <img src="" alt="Property Image" class="main-image" id="modalMainImage">
+                    <div class="thumbnail-gallery" id="modalThumbnails"></div>
+                </div>
+                <div class="property-info">
+                    <h1 id="modalTitle"></h1>
+                    <div class="price" id="modalPrice"></div>
+                    <div class="location" id="modalLocation"></div>
+                    <div class="property-type" id="modalType"></div>
+                    <button class="inquiry-btn" onclick="openInquiryModal()">
+                        <i class="fas fa-envelope"></i> Send Inquiry
+                    </button>
+                </div>
+            </div>
+
+            <div class="property-content">
+                <div class="property-description">
+                    <h3>Description</h3>
+                    <p id="modalDesc"></p>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <div class="amenities-grid" id="modalAmenities"></div>
+                </div>
+                <div class="map-placeholder">
+                    <h3>Location</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.812368496141!2d77.2090!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce36e8c8b1b5f%3A0xbec5c2e39d8e3b0!2sConnaught%20Place%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1699999999999" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inquiry Modal -->
+    <div class="inquiry-modal" id="inquiryModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeInquiryModal()">&times;</span>
+            <h3>Send Inquiry</h3>
+            <form id="inquiryForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to find your dream property? Let's talk!</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 6399374086</p>
+                            <p>+91 8477959919</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@SahiVilla.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Office</h4>
+                            <p>SahiVilla Tower<br>Birla Kurla Complex<br>Uttrakhand - 247663</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href=""><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://www.instagram.com/sahilhasan67?igsh=Z2FuOXhpbW84aG95"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send Message</h3>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                        <input type="email" placeholder="Email" required>
+                        <select required>
+                            <option value="">Select Service</option>
+                            <option>Buy Property</option>
+                            <option>Sell Property</option>
+                            <option>Rent Property</option>
+                        </select>
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-home"></i>
+                        <span>SahiVilla</span>
+                    </div>
+                    <p>Your trusted real estate partner across India</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#properties">Properties</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +91 6399374086</p>
+                    <p><i class="fas fa-envelope"></i> hello@SahiVilla.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SahiVilla. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #e74c3c;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-bar input, .search-bar select {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 12px 30px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        /* Properties */
+        .properties {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .property-content {
+            padding: 25px;
+        }
+
+        .property-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2rem;
+background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .offices-preview {
+            text-align: center;
+        }
+
+        .offices-preview h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .office-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .office-card:hover {
+            background: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .office-card i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        /* Modals */
+        .property-modal, .inquiry-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            z-index: 10;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .property-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .thumbnail-gallery img {
+            width: 70px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .thumbnail-gallery img:hover, .thumbnail-gallery img.active {
+            border-color: #e74c3c;
+        }
+
+        .property-info h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .inquiry-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .property-content {
+            padding: 0 2rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .amenities-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .amenity-tag {
+            background: #f8f9fa;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3, .contact-form h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #e74c3c;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 2rem;
+            text-align: center;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid, .contact-grid, .property-header, .property-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .property-modal .modal-content {
+                margin: 20px;
+                max-width: calc(100% - 40px);
+            }
+        }
+    </style>
+
+    <script>
+      
+        
+        ;
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProperties();
+            setupEventListeners();
+            updateActiveNav();
+        });
+
+        // Render Properties
+        function renderProperties(filtered = properties) {
+            const grid = document.getElementById('propertiesGrid');
+            grid.innerHTML = filtered.map(p => `
+                <div class="property-card" onclick="openPropertyModal(${p.id})">
+                    <div class="property-image">
+                        <img src="${p.image}" alt="${p.title}" loading="lazy">
+                        <div class="property-badge">${p.type}</div>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-title">${p.title}</h3>
+                        <div class="property-price">${p.price}</div>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> ${p.location}
+                        </div>
+                        <div class="property-type">${p.type}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Property Modal
+        function openPropertyModal(id) {
+            const property = properties.find(p => p.id === id);
+            if (!property) return;
+
+            document.getElementById('modalTitle').textContent = property.title;
+            document.getElementById('modalPrice').textContent = property.price;
+            document.getElementById('modalLocation').innerHTML = '<i class="fas fa-map-marker-alt"></i> ${property.location}';
+            document.getElementById('modalType').textContent = property.type;
+            document.getElementById('modalDesc').textContent = property.description;
+            document.getElementById('modalMainImage').src = property.image;
+            
+            // Thumbnails
+            document.getElementById('modalThumbnails').innerHTML = `
+                <img src="${property.image}" class="active" onclick="changeModalImage('${property.image}')">
+                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300" onclick="changeModalImage('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800')">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300" onclick="changeModalImage('${property.image}')">
+            `;
+            
+            // Amenities
+            document.getElementById('modalAmenities').innerHTML = property.amenities.map(a => 
+                <span class="amenity-tag">${a}</span>
+            ).join('');
+            
+            document.getElementById('propertyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePropertyModal() {
+            document.getElementById('propertyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeModalImage(src) {
+            document.getElementById('modalMainImage').src = src;
+            document.querySelectorAll('#modalThumbnails img').forEach(img => img.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Inquiry Modal
+    
+            function openInquiryModal() {
+            closePropertyModal();
+            document.getElementById('inquiryModal').style.display = 'block';
+        }
+
+        function closeInquiryModal() {
+            document.getElementById('inquiryModal').style.display = 'none';
+        }
+
+        // Form Handlers
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your inquiry has been sent. We will contact you within 24 hours.');
+            this.reset();
+            closeInquiryModal();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully! We will respond within 24 hours.');
+            this.reset();
+        });
+
+        // Search & Filter
+        function filterProperties() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const type = document.getElementById('typeFilter').value;
+           
+            
+            
+            const filtered = properties.filter(p => 
+                p.location.toLowerCase().includes(query) && 
+                (type === 'All Types' || p.type === type)
+            );
+            
+            renderProperties(filtered);
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            // Mobile Menu
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Search on Enter
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') filterProperties();
+            });
+
+            // Close modals on outside click
+            window.addEventListener('click', function(e) {
+                if (e.target.classList.contains('property-modal') || e.target.classList.contains('inquiry-modal')) {
+                    closePropertyModal();
+                    closeInquiryModal();
+                }
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+
+       
+        function updateActiveNav() {
+            const sections = ['home', 'properties', 'about', 'contact'];
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const el = document.getElementById(section);
+                    if (el.offsetTop < window.scrollY + 100) {
+                        current = section;
+                    }
+                });
+navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#${current}') {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePropertyModal();
+                closeInquiryModal();
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
